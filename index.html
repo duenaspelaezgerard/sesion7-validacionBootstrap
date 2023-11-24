@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesion 7 - Validacion Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Validacion Bootstrap</h1>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+
+        <form novalidate class="form border p-3 shadow" action="procesa.php" method="get">
+
+            <label for="email" class="label-control mb-3 ">Usuario: </label>
+
+            <input required  id="email" name="email" type="email" class="form-control" placeholder="email@ejemplo.com">
+            <div class="invalid-feedback small">Esta mal</div>
+
+            <label for="password" class="label-control mt-3">Contraseña: </label>
+
+            <input required id="password" minLenght="4" name="password" type="password" class="form-control mt-2">
+            <div class="invalid-feedback small">Esta mal</div>
+
+            <button class="btn btn-success mt-3 w-100">ENVIAR</button>
+
+        </form>
+    </div>
+
+    <script>
+        const formulario = document.querySelector('form')
+        formulario.addEventListener('submit', (event)=>{
+            if(!formulario.checkValidity()){
+                event.preventDefault()
+                event.stopPropagation()
+                console.log("El Formulario no valida")
+                formulario.classList.add('was-validated')
+            }
+        })
+    </script>
+</body>
+</html>
